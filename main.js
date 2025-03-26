@@ -22,11 +22,11 @@ function createWindow() {
       : `file://${path.join(__dirname, '../build/index.html')}`
   )
 
-  if (isDev) {
-    setTimeout(() => {
-      mainWindow.webContents.openDevTools()
-    }, 2000)
-  }
+  // if (isDev) {
+  //   setTimeout(() => {
+  //     mainWindow.webContents.openDevTools()
+  //   }, 2000)
+  // }
 }
 
 app.whenReady().then(() => {
