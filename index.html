@@ -5,16 +5,16 @@
     <!-- https://web.nodejs.cn/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     />
-    <title>Hello from Electron renderer!</title>
+    <title>Desktop Pet</title>
   </head>
   <body>
-    <h1>Hello from Electron renderer!</h1>
-    <p>👋</p>
+    <div id="root"></div>
+    <script src="./dist/bundle.js"></script>
   </body>
 </html>
