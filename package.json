@@ -1,0 +1,15 @@
+{
+  "name": "desktop-pet",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "git@github.com:HUGBUGS/desktop-pet.git",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jiangling <hugbugs@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.0.3"
+  }
+}
