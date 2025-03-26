@@ -13,8 +13,9 @@
   width: 75%;
   height: 75%;
   position: relative;
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   margin-top: 10%;
+  will-change: transform;
 }
 
 .petBody {
@@ -23,7 +24,6 @@
   background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
   border-radius: 50% 50% 45% 45%;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   animation: breathe 4s ease-in-out infinite;
 }
 
@@ -126,7 +126,7 @@
     transform: translateY(0) rotate(0);
   }
   50% {
-    transform: translateY(-10%) rotate(2deg);
+    transform: translateY(-8%) rotate(1deg);
   }
 }
 
