@@ -1,12 +1,32 @@
 const { app, BrowserWindow } = require('electron')
+const path = require('path')
+const isDev = require('electron-is-dev')
 
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 300,
+    height: 300,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
+    backgroundColor: '#00000000',
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
   })
 
-  win.loadFile('index.html')
+  mainWindow.loadURL(
+    isDev
+      ? 'http://localhost:3000'
+      : `file://${path.join(__dirname, '../build/index.html')}`
+  )
+
+  if (isDev) {
+    setTimeout(() => {
+      mainWindow.webContents.openDevTools()
+    }, 2000)
+  }
 }
 
 app.whenReady().then(() => {

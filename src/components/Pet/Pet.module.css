@@ -1,0 +1,334 @@
+.petContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  -webkit-app-region: drag;
+}
+
+.pet {
+  width: 75%;
+  height: 75%;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+  margin-top: 10%;
+}
+
+.petBody {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.petCheek {
+  width: 25%;
+  height: 15%;
+  background: rgba(255, 182, 193, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  animation: blush 3s ease-in-out infinite;
+}
+
+.petCheek.left {
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+.petCheek.right {
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+.petEye {
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 35%;
+  animation: blink 4s infinite;
+}
+
+.petEye.left {
+  left: 30%;
+}
+
+.petEye.right {
+  right: 30%;
+}
+
+.petEye::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  background: white;
+  border-radius: 50%;
+  top: 20%;
+  left: 20%;
+  animation: shine 3s ease-in-out infinite;
+}
+
+.petMouth {
+  width: 30%;
+  height: 10%;
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: smile 3s ease-in-out infinite;
+}
+
+.petMouth::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #333;
+  border-radius: 0 0 50% 50%;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  transform-origin: top center;
+  animation: mouthMove 3s ease-in-out infinite;
+}
+
+.petEar {
+  width: 20%;
+  height: 30%;
+  background: #FFB6C1;
+  position: absolute;
+  top: -5%;
+  border-radius: 50% 50% 0 0;
+  animation: earWiggle 3s ease-in-out infinite;
+}
+
+.petEar.left {
+  left: 20%;
+  transform: rotate(-10deg);
+}
+
+.petEar.right {
+  right: 20%;
+  transform: rotate(10deg);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-10%) rotate(2deg);
+  }
+}
+
+@keyframes blink {
+  0%, 48%, 52%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes smile {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes blush {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shine {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes earWiggle {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
+.petEar.right {
+  animation: earWiggleRight 3s ease-in-out infinite;
+}
+
+@keyframes earWiggleRight {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes mouthMove {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.8);
+  }
+}
+
+.voiceIcon {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  -webkit-app-region: no-drag;
+}
+
+.voiceIcon:hover {
+  transform: scale(1.15);
+}
+
+.voiceIconInner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+.voiceIconInner::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.voiceWave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.voiceIcon.animating .voiceWave {
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+.voiceIcon.animating .voiceWave:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.voiceIcon.animating .voiceWave:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.voiceIcon.animating .voiceWave:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.tipContainer {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  z-index: 11;
+  animation: fadeIn 0.3s ease;
+  -webkit-app-region: no-drag;
+}
+
+.tipBubble {
+  background: linear-gradient(135deg, #FF69B4 100%, #FFB6C1 100%);
+  padding: 12px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+}
+
+.tipText {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tipArrow {
+  position: absolute;
+  left: 20%;
+  top: -8px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #FF69B4;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

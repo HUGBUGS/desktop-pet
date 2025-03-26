@@ -4,8 +4,8 @@
   "main": "main.js",
   "repository": "git@github.com:HUGBUGS/desktop-pet.git",
   "scripts": {
-    "start": "electron .",
-    "dev": "webpack serve --config webpack.config.js",
+    "start": "webpack --config webpack.config.js && electron .",
+    "dev": "cross-env NODE_ENV=development concurrently \"webpack serve --config webpack.config.js\" \"wait-on http://localhost:3000 && electron .\"",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,12 +16,19 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "babel-loader": "^10.0.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^7.1.2",
     "electron": "^35.0.3",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "wait-on": "^8.0.3",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
+    "electron-is-dev": "^3.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }
